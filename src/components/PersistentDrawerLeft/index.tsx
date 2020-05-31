@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import clsx from 'clsx'
 import { useHistory } from 'react-router-dom'
 import {
@@ -17,19 +17,26 @@ import SettingsIcon from '@material-ui/icons/Settings'
 import NotificationsIcon from '@material-ui/icons/Notifications'
 import MoreIcon from '@material-ui/icons/MoreVert'
 
-import CustomModal from '../CustomModal'
+import { AppContext } from '../../store'
+import { Types } from '../../store/reducers/types'
 
 import Sidebar from './Sidebar'
 import { useStyles } from './styles'
 
 const PersistentDrawerLeft: React.FC = ({ children }) => {
+  const { dispatch } = useContext(AppContext)
   const classes = useStyles()
   const [open, setOpen] = React.useState(true)
-  const [createTaskModalOpen, setCreateTaskModalOpenOpen] = React.useState(false)
   const history = useHistory()
 
   const handleDrawerToggle = () => {
     setOpen(!open)
+  }
+
+  const createTask = () => {
+    dispatch({
+      type: Types.TOGGLE_MODAL_CREATE_TASK
+    })
   }
 
   return (
@@ -77,7 +84,7 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
             <IconButton
               aria-label="show 4 new mails"
               color="inherit"
-              onClick={() => setCreateTaskModalOpenOpen(true)}
+              onClick={createTask}
             >
               <AddIcon />
             </IconButton>
@@ -112,10 +119,6 @@ const PersistentDrawerLeft: React.FC = ({ children }) => {
       >
         {children}
       </main>
-      <CustomModal
-        open={createTaskModalOpen}
-        closeModal={() => setCreateTaskModalOpenOpen(false)}
-      />
     </div>
   )
 }

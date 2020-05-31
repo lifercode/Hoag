@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import {
@@ -14,6 +14,8 @@ import InboxIcon from '@material-ui/icons/Inbox'
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday'
 import ViewDayIcon from '@material-ui/icons/ViewDay'
 
+import { AppContext } from '../../store'
+import { Types } from '../../store/reducers/types'
 import ListItemCollapse from './ListItemCollapse'
 import { useStyles } from './styles'
 
@@ -22,8 +24,22 @@ type SidebarProps = {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ open }) => {
+  const { dispatch } = useContext(AppContext)
+
   const classes = useStyles()
   const history = useHistory()
+
+  const createProject = () => {
+    dispatch({
+      type: Types.TOGGLE_MODAL_CREATE_PROJECT
+    })
+  }
+
+  const createTag = () => {
+    dispatch({
+      type: Types.TOGGLE_MODAL_CREATE_TAG
+    })
+  }
 
   return (
     <Drawer
@@ -55,11 +71,19 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
       </List>
       <Divider />
       <List>
-        <ListItemCollapse title="Projects" list={['Starred']} />
+        <ListItemCollapse
+          title="Projects"
+          list={['Starred']}
+          onAdd={createProject}
+        />
       </List>
       <Divider />
       <List>
-        <ListItemCollapse title="Tags" list={['Starred']} />
+        <ListItemCollapse
+          title="Tags"
+          list={['Starred']}
+          onAdd={createTag}
+        />
       </List>
     </Drawer>
   )

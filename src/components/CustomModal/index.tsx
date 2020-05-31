@@ -8,13 +8,13 @@ type CustomModalProps = {
   closeModal: () => void
 }
 
-const CustomModal: React.FC<CustomModalProps> = ({ open, closeModal }) => {
+const CustomModal: React.FC<CustomModalProps> = ({ children, open, closeModal }) => {
   const classes = useStyles()
 
   return (
     <Modal open={open} onClose={closeModal}>
       <div className={classes.paper}>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis aut delectus sit, odit enim architecto quos facilis nobis deserunt fugit quod ea veniam cupiditate eaque, quis dolore corrupti officiis. Excepturi!</p>
+        {children}
       </div>
     </Modal>
   )
