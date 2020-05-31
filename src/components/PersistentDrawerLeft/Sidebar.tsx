@@ -24,7 +24,7 @@ type SidebarProps = {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ open }) => {
-  const { dispatch } = useContext(AppContext)
+  const { state, dispatch } = useContext(AppContext)
 
   const classes = useStyles()
   const history = useHistory()
@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
       <List>
         <ListItemCollapse
           title="Projects"
-          list={['Starred']}
+          list={state.projects}
           onAdd={createProject}
         />
       </List>
@@ -81,7 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ open }) => {
       <List>
         <ListItemCollapse
           title="Tags"
-          list={['Starred']}
+          list={state.tags}
           onAdd={createTag}
         />
       </List>

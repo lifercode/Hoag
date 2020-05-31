@@ -13,11 +13,15 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord'
 import AddIcon from '@material-ui/icons/Add'
 
+import { ProjectType } from '../../store/reducers/project/types'
+import { TagType } from '../../store/reducers/tag/types'
 import { useStyles } from './styles'
+
+type ItemType = ProjectType | TagType
 
 type ListItemCollapseProps = {
   title: string
-  list: string[]
+  list: ItemType[]
   onAdd: () => void
 }
 
@@ -42,12 +46,12 @@ const ListItemCollapse: React.FC<ListItemCollapseProps> = ({ title, list, onAdd 
       )}
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List>
-          {list.map((item, i) => (
-            <ListItem key={i} button className={classes.nested}>
+          {list.map(({ id, name }) => (
+            <ListItem key={id} button className={classes.nested}>
               <ListItemIcon className={classes.listItemIcon}>
                 <FiberManualRecordIcon />
               </ListItemIcon>
-              <ListItemText primary={item} />
+              <ListItemText primary={name} />
             </ListItem>
           ))}
           <ListItem button className={classes.nested} onClick={onAdd}>

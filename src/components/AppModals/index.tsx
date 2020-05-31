@@ -20,21 +20,21 @@ const AppModals = () => {
         open={state.modalOpen.createTask}
         closeModal={() => closeModal(Types.TOGGLE_MODAL_CREATE_TASK)}
       >
-        <CreateTask />
+        <CreateTask onFinish={() => closeModal(Types.TOGGLE_MODAL_CREATE_TASK)} />
       </CustomModal>
 
       <CustomModal
         open={state.modalOpen.createProject}
         closeModal={() => closeModal(Types.TOGGLE_MODAL_CREATE_PROJECT)}
       >
-        <CreateProject />
+        <CreateProject onFinish={() => closeModal(Types.TOGGLE_MODAL_CREATE_PROJECT)} />
       </CustomModal>
 
       <CustomModal
         open={state.modalOpen.createTag}
         closeModal={() => closeModal(Types.TOGGLE_MODAL_CREATE_TAG)}
       >
-        <CreateTag />
+        <CreateTag onFinish={() => closeModal(Types.TOGGLE_MODAL_CREATE_TAG)} />
       </CustomModal>
     </>
   )
