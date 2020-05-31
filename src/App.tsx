@@ -1,12 +1,15 @@
 import React from 'react'
 
 import AppThemeProvider from './components/AppThemeProvider'
+import { AppProvider } from './store'
 import Routes from './routes'
 
 const App = () => (
-  <AppThemeProvider>
-    <Routes />
-  </AppThemeProvider>
+  <AppProvider>
+    <AppThemeProvider>
+      <Routes />
+    </AppThemeProvider>
+  </AppProvider>
 )
 
 export default App
