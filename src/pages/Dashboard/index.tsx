@@ -5,13 +5,17 @@ import {
 } from 'react-router-dom'
 import { Container } from '@material-ui/core'
 
-import PersistentDrawerLeft from '../../components/PersistentDrawerLeft'
+import {
+  AppModals,
+  PersistentDrawerLeft
+} from '../../components'
 import Inbox from './Inbox'
 import Today from './Today'
 import Upcoming from './Upcoming'
 
 const Dashboard = () => (
   <PersistentDrawerLeft>
+    <AppModals />
     <Container maxWidth="md">
       <Switch>
         <Route path="/app/upcoming">

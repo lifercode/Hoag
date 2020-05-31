@@ -11,15 +11,16 @@ type TaskType = {
 }
 
 type TaskListProps = {
-  tasks: TaskType[]
+  tasks: TaskType[],
+  type: string
 }
 
-const TaskList: React.FC<TaskListProps> = ({ tasks }) => (
+const TaskList: React.FC<TaskListProps> = ({ tasks, type }) => (
   <List>
     {tasks.map((item, index) => (
       <TaskItem key={index} task={item} />
     ))}
-    <AddTaskItem />
+    <AddTaskItem type={type} />
   </List>
 )
 

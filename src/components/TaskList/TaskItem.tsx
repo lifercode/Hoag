@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {
   ListItem,
   ListItemIcon,
@@ -13,6 +13,9 @@ import {
 
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 
+import { AppContext } from '../../store'
+import { Types } from '../../store/reducers/types'
+
 type TaskType = {
   id: string,
   content: string,
@@ -24,6 +27,7 @@ type TaskItemProps = {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
+  const { dispatch } = useContext(AppContext)
   const [isChecked, setChecked] = useState(task.completed)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -38,9 +42,19 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
 
   const toggleChecked = () => setChecked(!isChecked)
 
+  const deleteTask = () => {
+    dispatch({
+      type: Types.DELETE_INBOX_TASK,
+      payload: {
+        id: task.id
+      }
+    })
+    handleClose()
+  }
+
   return (
     <>
-      <ListItem role={undefined} dense button onClick={toggleChecked}>
+      <ListItem role={undefined} dense button onClick={() => {}}>
         <ListItemIcon>
           <Checkbox
             edge="start"
@@ -49,7 +63,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
             onClick={toggleChecked}
           />
         </ListItemIcon>
-        <ListItemText primary="Tarefa um" />
+        <ListItemText primary={task.content} />
         <ListItemSecondaryAction>
           <IconButton
             edge="end"
@@ -73,7 +87,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           <MenuItem onClick={() => {}}>
             Edit task
           </MenuItem>
-          <MenuItem onClick={() => {}}>
+          <MenuItem onClick={deleteTask}>
             Delete task
           </MenuItem>
       </Menu>

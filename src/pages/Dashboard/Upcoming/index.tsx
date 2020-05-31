@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
 import { PageHeader } from '../../../components/ui'
 import { TaskList } from '../../../components'
-import { tasks } from '../../../fakeData'
 
-const Upcoming = () => (
-  <>
-    <PageHeader title ="Upcoming" />
-    <TaskList tasks={tasks} />
-  </>
-)
+import { AppContext } from '../../../store'
+
+const Upcoming = () => {
+  const { state } = useContext(AppContext)
+  
+  return (
+    <>
+      <PageHeader title ="Upcoming" />
+      <TaskList tasks={state.upcoming} type="upcoming" />
+    </>
+  )
+}
 
 export default Upcoming
