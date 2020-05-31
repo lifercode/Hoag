@@ -3,7 +3,9 @@ import {
   inboxReducer,
   todayReducer,
   upcomingReducer,
-  modalReducer
+  modalReducer,
+  projectReducer,
+  tagReducer
 } from './reducers'
 
 import {
@@ -20,6 +22,8 @@ const initialState = {
     createProject: false,
     createTag: false,
   },
+  projects: [],
+  tags: [],
 }
 
 const reducer = (state: InitialStateType, action: any) => {
@@ -27,14 +31,18 @@ const reducer = (state: InitialStateType, action: any) => {
     tasks,
     today,
     upcoming,
-    modalOpen
+    modalOpen,
+    projects,
+    tags
   } = state
 
   return {
     tasks: inboxReducer(tasks, action),
     today: todayReducer(today, action),
     upcoming: upcomingReducer(upcoming, action),
-    modalOpen: modalReducer(modalOpen, action)
+    modalOpen: modalReducer(modalOpen, action),
+    projects: projectReducer(projects, action),
+    tags: tagReducer(tags, action)
   }
 }
 
