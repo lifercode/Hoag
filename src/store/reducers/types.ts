@@ -38,22 +38,6 @@ export type TaskType = {
   completed: boolean;
 }
 
-export type ProjectType = {
-  id: string;
-  name: string;
-}
-
-export type TagType = {
-  id: string;
-  name: string;
-}
-
-export type ModalOpenType = {
-  createTask: boolean
-  createProject: boolean
-  createTag: boolean
-}
-
 export type ActionType = InboxActions
   | TodayActions
   | UpcomingActions

@@ -1,8 +1,5 @@
-import {
-  ProjectType,
-  ActionType,
-  Types
-} from '../types'
+import { ActionType, Types } from '../types'
+import { ProjectType } from './types'
 
 const projectReducer = (state: ProjectType[], action: ActionType) => {
   switch (action.type) {

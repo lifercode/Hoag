@@ -3,6 +3,11 @@ import {
   Types
 } from '../types'
 
+export type TagType = {
+  id: string;
+  name: string;
+}
+
 export type TagPayload = {
   [Types.CREATE_TAG] : {
     id: string;

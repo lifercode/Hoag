@@ -3,6 +3,11 @@ import {
   Types
 } from '../types'
 
+export type ProjectType = {
+  id: string;
+  name: string;
+}
+
 export type ProjectPayload = {
   [Types.CREATE_PROJECT] : {
     id: string;

@@ -1,8 +1,5 @@
-import {
-  ModalOpenType,
-  ActionType,
-  Types
-} from '../types'
+import { ActionType, Types } from '../types'
+import { ModalOpenType } from './types'
 
 const modalReducer = (state: ModalOpenType, action: ActionType) => {
   switch (action.type) {

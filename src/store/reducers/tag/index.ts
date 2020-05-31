@@ -1,8 +1,5 @@
-import {
-  TagType,
-  ActionType,
-  Types
-} from '../types'
+import { ActionType, Types } from '../types'
+import { TagType } from './types'
 
 const tagReducer = (state: TagType[], action: ActionType) => {
   switch (action.type) {

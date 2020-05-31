@@ -1,26 +1,9 @@
 import React from 'react'
 
-type TaskType = {
-  id: string
-  content: string
-  completed: boolean
-}
-
-type ModalOpenType = {
-  createTask: boolean
-  createProject: boolean
-  createTag: boolean
-}
-
-type ProjectType = {
-  id: string;
-  name: string;
-}
-
-type TagType = {
-  id: string;
-  name: string;
-}
+import { TaskType } from './reducers/types'
+import { ModalOpenType } from './reducers/modal/types'
+import { TagType } from './reducers/tag/types'
+import { ProjectType } from './reducers/project/types'
 
 export type InitialStateType = {
   tasks: TaskType[]

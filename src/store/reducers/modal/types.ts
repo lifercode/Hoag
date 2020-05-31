@@ -3,6 +3,12 @@ import {
   Types
 } from '../types'
 
+export type ModalOpenType = {
+  createTask: boolean
+  createProject: boolean
+  createTag: boolean
+}
+
 export type ModalPayload = {
   [Types.TOGGLE_MODAL_CREATE_PROJECT] : {};
   [Types.TOGGLE_MODAL_CREATE_TAG] : {};
