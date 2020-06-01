@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import {
   List,
   ListItem,
@@ -28,6 +29,7 @@ type ListItemCollapseProps = {
 const ListItemCollapse: React.FC<ListItemCollapseProps> = ({ title, list, onAdd }) => {
   const [open, setOpen] = useState(false)
   const classes = useStyles()
+  const history = useHistory()
 
   return (
     <>
@@ -47,7 +49,9 @@ const ListItemCollapse: React.FC<ListItemCollapseProps> = ({ title, list, onAdd 
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List>
           {list.map(({ id, name }) => (
-            <ListItem key={id} button className={classes.nested}>
+            <ListItem key={id} button className={classes.nested} onClick={() => {
+              history.push(`/app/${title.toLowerCase()}/${id}`)
+            }}>
               <ListItemIcon className={classes.listItemIcon}>
                 <FiberManualRecordIcon />
               </ListItemIcon>

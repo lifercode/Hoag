@@ -5,15 +5,15 @@ import { TaskList } from '../../../components'
 
 import { AppContext } from '../../../store'
 
-const Inbox = () => {
+const TagSingle = () => {
   const { state } = useContext(AppContext)
 
   return (
     <>
-      <PageHeader title ="Inbox" />
-      <TaskList tasks={state.inbox} type="inbox" />
+      <PageHeader title ="Tag" />
+      <TaskList tasks={state.tasks} type="task" />
     </>
   )
 }
 
-export default Inbox
+export default TagSingle

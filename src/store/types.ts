@@ -7,6 +7,7 @@ import { ProjectType } from './reducers/project/types'
 
 export type InitialStateType = {
   tasks: TaskType[]
+  inbox: TaskType[]
   today: TaskType[]
   upcoming: TaskType[]
   modalOpen: ModalOpenType

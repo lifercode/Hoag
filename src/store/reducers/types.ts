@@ -1,4 +1,5 @@
 import { InboxActions } from './inbox/types'
+import { TaskActions } from './task/types'
 import { TodayActions } from './today/types'
 import { UpcomingActions } from './upcoming/types'
 import { ModalActions } from './modal/types'
@@ -17,6 +18,8 @@ export type ActionMap<M extends { [index: string]: any }> = {
 };
 
 export enum Types {
+  CREATE_TASK = 'CREATE_TASK',
+  DELETE_TASK = 'DELETE_TASK',
   CREATE_INBOX_TASK = 'CREATE_INBOX_TASK',
   DELETE_INBOX_TASK = 'DELETE_INBOX_TASK',
   CREATE_TODAY_TASK = 'CREATE_TODAY_TASK',
@@ -44,3 +47,4 @@ export type ActionType = InboxActions
   | ModalActions
   | ProjectActions
   | TagActions
+  | TaskActions

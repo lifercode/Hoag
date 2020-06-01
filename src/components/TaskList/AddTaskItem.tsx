@@ -25,29 +25,43 @@ const AddTaskItem: React.FC<AddTaskItemProps> = ({ type }) => {
       return
     }
 
-    const payload = {
-      id: (state.tasks.length + 1).toString(),
-      content,
+    if (type === 'task') {
+      dispatch({
+        type: Types.CREATE_TASK,
+        payload: {
+          id: (state.inbox.length + 1).toString(),
+          content,
+        }
+      })
     }
 
     if (type === 'inbox') {
       dispatch({
         type: Types.CREATE_INBOX_TASK,
-        payload
+        payload: {
+          id: (state.inbox.length + 1).toString(),
+          content,
+        }
       })
     }
 
     if (type === 'today') {
       dispatch({
         type: Types.CREATE_TODAY_TASK,
-        payload
+        payload: {
+          id: (state.today.length + 1).toString(),
+          content,
+        }
       })
     }
 
     if (type === 'upcoming') {
       dispatch({
         type: Types.CREATE_UPCOMING_TASK,
-        payload
+        payload: {
+          id: (state.upcoming.length + 1).toString(),
+          content,
+        }
       })
     }
     

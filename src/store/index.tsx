@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 import {
+  taskReducer,
   inboxReducer,
   todayReducer,
   upcomingReducer,
@@ -15,6 +16,7 @@ import {
 
 const initialState = {
   tasks: [],
+  inbox: [],
   today: [],
   upcoming: [],
   modalOpen: {
@@ -29,6 +31,7 @@ const initialState = {
 const reducer = (state: InitialStateType, action: any) => {
   const {
     tasks,
+    inbox,
     today,
     upcoming,
     modalOpen,
@@ -37,7 +40,8 @@ const reducer = (state: InitialStateType, action: any) => {
   } = state
 
   return {
-    tasks: inboxReducer(tasks, action),
+    tasks: taskReducer(tasks, action),
+    inbox: inboxReducer(inbox, action),
     today: todayReducer(today, action),
     upcoming: upcomingReducer(upcoming, action),
     modalOpen: modalReducer(modalOpen, action),
